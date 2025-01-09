@@ -2,13 +2,26 @@
 // click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
 public class Main {
     public static void main(String[] args) {
-        Array array = new Array();
+        Array<Integer> array = new Array<Integer>();
 
         for(int i = 0; i < 10; i++){
             array.add(i + 1);
         }
+        Array<String> words  = new Array<>();
 
-        for(int i = 0; i < array.getSize(); i++){
+        words.add("Ben");
+        words.add("Emma");
+        words.add("James");
+        words.add("David");
+        words.add("Adam");
+        words.add("Seth");
+        words.add("paul");
+
+        for(int x = 0; x < words.size(); x++ ){
+            System.out.println(words.get(x));
+        }
+
+        for(int i = 0; i < array.size(); i++){
             System.out.println(array.get(i));
         }
     }
