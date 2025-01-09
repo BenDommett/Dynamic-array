@@ -1,27 +1,33 @@
-public class Array {
-    private int[] array;
+public class Array<T> {
+
+    private T[] array;
     private int size;
     private int count;
+
+    @SuppressWarnings("unchecked")
     public  Array(){
-        array = new int[1];
+        this.array = (T[]) new Object[1];
+
+        //array = new int[1];
         size = 1;
         count = 0;
     }
-    public void add(int data){
+
+    public void add(T data){
         if(count == size) increaseSize();
 
-        array[count] = data;
+        array[count]  = data;
         count++;
 
     }
-
+    @SuppressWarnings("unchecked")
     private void increaseSize(){
-         int[] temp;
+        T[] temp;
 
          if(count == size){
-             temp = new int[size * 2];
+             temp = (T[]) new Object[size * 2];
 
-             if (getSize() >= 0) System.arraycopy(array, 0, temp, 0, getSize());
+             if (size() >= 0) System.arraycopy(array, 0, temp, 0, size());
 
              array = temp;
 
@@ -31,11 +37,15 @@ public class Array {
 
 
     }
-    public int getSize(){
+    public int size(){
         return count;
     }
-    public int get(int index){
-
+    public T get(int index){
+        if (index < 0 || index >= count) {
+            throw new IndexOutOfBoundsException("Index: " + index + ", Size: " + count);
+        }
         return array[index];
+
+
     }
 }
