@@ -40,11 +40,34 @@ public class Array<T> {
     public int size(){
         return count;
     }
+
+    public int arrayFullSize(){
+        return size;
+    }
     public T get(int index){
         if (index < 0 || index >= count) {
             throw new IndexOutOfBoundsException("Index: " + index + ", Size: " + count);
         }
         return array[index];
+
+
+    }
+
+    public void  remove(int index){
+
+            if( index < 0 || index >= size){
+                Exception IndexOutOfBoundsException;
+
+            }
+
+            for(int i = index; i < count; i++){
+                array[i] = array[i + 1];
+            }
+
+            count--;
+
+
+
 
 
     }

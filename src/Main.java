@@ -24,5 +24,22 @@ public class Main {
         for(int i = 0; i < array.size(); i++){
             System.out.println(array.get(i));
         }
+
+
+        words.remove(1);
+
+        array.remove(2);
+
+        for(int i = 0; i < array.size(); i++){
+            System.out.println(array.get(i));
+        }
+
+        //array.remove(2);
+        System.out.println("after Emma removed ");
+        for(int x = 0; x < words.size(); x++ ){
+            System.out.println(words.get(x));
+        }
+
+
     }
 }
