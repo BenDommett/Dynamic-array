@@ -56,7 +56,7 @@ public class Array<T> {
     public void  remove(int index){
 
             if( index < 0 || index >= size){
-                Exception IndexOutOfBoundsException;
+                System.out.println("Out of bounds");
 
             }
 
@@ -71,4 +71,16 @@ public class Array<T> {
 
 
     }
+
+
+
+    public void remove(T input){
+        for(int i = 0; i < count; i++){
+
+            if(array[i] == input){
+                remove(i);
+            }
+        }
+    }
+
 }

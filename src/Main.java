@@ -2,7 +2,7 @@
 // click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
 public class Main {
     public static void main(String[] args) {
-        Array<Integer> array = new Array<Integer>();
+        Array<Integer> array = new Array<>();
 
         for(int i = 0; i < 10; i++){
             array.add(i + 1);
@@ -27,7 +27,8 @@ public class Main {
 
 
         words.remove(1);
-
+        words.remove("Ben");
+        words.remove("David");
         array.remove(2);
 
         for(int i = 0; i < array.size(); i++){
