@@ -1,8 +1,11 @@
 public class Search<T> {
 
 
-    public Boolean search(T search){
+    public T search(T search){
 
-        return false;
+        return null;
     }
+
+
+
 }

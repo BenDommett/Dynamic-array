@@ -15,8 +15,8 @@ public class Main {
         words.add("David");
         words.add("Adam");
         words.add("Seth");
-        words.add("paul");
-
+        words.add("Paul");
+        words.sort();
         for(int x = 0; x < words.size(); x++ ){
             System.out.println(words.get(x));
         }
@@ -26,16 +26,12 @@ public class Main {
         }
 
 
-        words.remove(1);
-        words.remove("Ben");
-        words.remove("David");
-        array.remove(2);
+        words.removeALL();
 
         for(int i = 0; i < array.size(); i++){
             System.out.println(array.get(i));
         }
 
-        //array.remove(2);
         System.out.println("after Emma removed ");
         for(int x = 0; x < words.size(); x++ ){
             System.out.println(words.get(x));
