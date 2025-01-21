@@ -152,4 +152,16 @@ public class Array<T> {
         return array;
 
     }
+
+    public T[] Insert(T input , int index ){
+
+
+        T temp;
+        temp = array[index];
+        array[index] = input;
+        count++;
+        if(count == size) increaseSize();
+        array[count - 1] = temp;
+        return array;
+    }
 }
