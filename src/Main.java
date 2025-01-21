@@ -19,6 +19,10 @@ public class Main {
         for(int i = 0; i < cars.size(); i++){
             System.out.println(cars.get(i));
         }
+        cars.removeALL();
 
+        cars.add("ben");
+
+        System.out.println(cars.get(0));
     }
 }

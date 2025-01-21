@@ -6,6 +6,7 @@ public class Array<T> {
 
     @SuppressWarnings("unchecked")
     public  Array(){
+        // this is the class constructor
         this.array = (T[]) new Object[1];
 
         //array = new int[1];
@@ -13,6 +14,7 @@ public class Array<T> {
         count = 0;
     }
 
+    // this allows any type to be added to the array
     public void add(T data){
         if(count == size) increaseSize();
 
@@ -20,10 +22,11 @@ public class Array<T> {
         count++;
 
     }
+
     @SuppressWarnings("unchecked")
     private void increaseSize(){
         T[] temp;
-
+        // this increase the array by two times its original size
          if(count == size){
              temp = (T[]) new Object[size * 2];
 
@@ -38,12 +41,15 @@ public class Array<T> {
 
     }
     public int size(){
+        // this is the used parts of the array
         return count;
     }
 
     public int arrayFullSize(){
+        // this returns the full size of the array even the unused parts of the array
         return size;
     }
+
     public T get(int index){
         if (index < 0 || index >= count) {
             throw new IndexOutOfBoundsException("Index: " + index + ", Size: " + count);
@@ -54,12 +60,13 @@ public class Array<T> {
     }
 
     public void  remove(int index){
-
+            // checking if the index is in bounds of the array
             if( index < 0 || index >= size){
                 System.out.println("Out of bounds");
 
             }
 
+            //finding and removing the element at the inputted index
             for(int i = index; i < count; i++){
                 array[i] = array[i + 1];
             }
@@ -75,8 +82,9 @@ public class Array<T> {
 
 
     public void remove(T input) {
+       // for finding the element with in the array
         for (int i = 0; i < count; i++) {
-
+            // for removing the element with in the array
             if (array[i] == input) {
                 remove(i);
             }
@@ -84,10 +92,11 @@ public class Array<T> {
     }
     @SuppressWarnings("unchecked")
     public void removeALL(){
-        T[] EmptyeArray =  (T[]) new Object[1];
 
 
-        array = EmptyeArray;
+        // this creates a new array
+        array = (T[]) new Object[1];
+        // resets the values to the original state
         count = 0;
         size = 1;
     }
@@ -96,35 +105,34 @@ public class Array<T> {
     // i undearstand they are in to diffrent class repectivly
 
     private int compareTo(String val1 , String  val2){
+        // to stop any comparison issues with the letters being compared as all lower case letters come first
         val1 = val1.toLowerCase();
         val2 = val2.toLowerCase();
 
-
+        // getting the lengths of the words and then the min length for the loop
         int leng1 = val1.length();
         int leng2 = val2.length();
-        int minLenght = Math.min(leng1 , leng2);
+        int minLeng = Math.min(leng1 , leng2);
 
-        for(int i = 0; i < minLenght; i++){
+        // loop for comparison of the letters within the two words
+        for(int i = 0; i < minLeng; i++){
             char char1 = val1.charAt(i);
             char char2 = val2.charAt(i);
 
             if(char1 != char2){
 
                 if(char1 > char2 ){
+                    // this means the letter comes before the other
                     return 1;
                 }else {
+                    // means it comes after
                     return -1;
                 }
             }
 
         }
-        if(leng1 == leng2){
-            return 0;
-        }else if (leng1 > leng2){
-            return 1;
-        }else{
-            return 1;
-        }
+        // this is if the words are the same as one another
+        return 0;
 
     }
 
@@ -136,7 +144,7 @@ public class Array<T> {
         for(int i = 0; i < index - 1; i++){
             int minIndex = i;
             for(int x = i + 1; x < index; x++  ){
-
+                // this is calling the compareTO i made with in this class not the pre-existing one
                 if(compareTo((String) array[x], (String) array[minIndex]) < 0){
                     minIndex = x;
                 }
@@ -157,11 +165,17 @@ public class Array<T> {
 
 
         T temp;
+        // this is where the value is copy from the array
         temp = array[index];
+        // then replaced with the chosen input at the given index
         array[index] = input;
+        // updating the count
         count++;
+        // checking the size and count to see if size needs to be increased
         if(count == size) increaseSize();
+        // then value being moved is added to the end of the array
         array[count - 1] = temp;
+
 
     }
 }
