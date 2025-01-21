@@ -153,7 +153,7 @@ public class Array<T> {
 
     }
 
-    public T[] Insert(T input , int index ){
+    public  void Insert(T input , int index ){
 
 
         T temp;
@@ -162,6 +162,6 @@ public class Array<T> {
         count++;
         if(count == size) increaseSize();
         array[count - 1] = temp;
-        return array;
+
     }
 }
