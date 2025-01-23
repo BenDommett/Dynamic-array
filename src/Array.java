@@ -101,51 +101,17 @@ public class Array<T> {
         size = 1;
     }
 
-    // for ease in the creating of my own array i am adding with compareto method and sort method to the array class
-    // i undearstand they are in to diffrent class repectivly
 
-    private int compareTo(String val1 , String  val2){
-        // to stop any comparison issues with the letters being compared as all lower case letters come first
-        val1 = val1.toLowerCase();
-        val2 = val2.toLowerCase();
-
-        // getting the lengths of the words and then the min length for the loop
-        int leng1 = val1.length();
-        int leng2 = val2.length();
-        int minLeng = Math.min(leng1 , leng2);
-
-        // loop for comparison of the letters within the two words
-        for(int i = 0; i < minLeng; i++){
-            char char1 = val1.charAt(i);
-            char char2 = val2.charAt(i);
-
-            if(char1 != char2){
-
-                if(char1 > char2 ){
-                    // this means the letter comes before the other
-                    return 1;
-                }else {
-                    // means it comes after
-                    return -1;
-                }
-            }
-
-        }
-        // this is if the words are the same as one another
-        return 0;
-
-    }
-
-
+    // selection sort - will possibly change in the future
     public T[] sort(){
-
+        compareTo<T> compareTo = new compareTo<>();
         int index = count;
 
         for(int i = 0; i < index - 1; i++){
             int minIndex = i;
             for(int x = i + 1; x < index; x++  ){
                 // this is calling the compareTO i made with in this class not the pre-existing one
-                if(compareTo((String) array[x], (String) array[minIndex]) < 0){
+                if(compareTo.compareToo( array[x], array[minIndex]) < 0){
                     minIndex = x;
                 }
             }
@@ -178,4 +144,6 @@ public class Array<T> {
 
 
     }
+
+
 }
