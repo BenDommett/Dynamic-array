@@ -187,4 +187,10 @@ public class Array<T> {
         return array;
     }
 
+    public void set(T value , int index){
+
+        // then replaced with the chosen input at the given index
+        array[index] = value;
+    }
+
 }

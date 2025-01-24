@@ -30,10 +30,13 @@ public class Main {
 
         System.out.println("after add all");
         System.out.println("  ");
+        cars.set("ford" , 3);
         cars.sort();
         for(int i = 0; i < cars.size(); i++){
             System.out.println(cars.get(i));
         }
+
+
 
 
     }
