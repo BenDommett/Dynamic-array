@@ -72,11 +72,6 @@ public class Array<T> {
             }
 
             count--;
-
-
-
-
-
     }
 
 
@@ -142,8 +137,29 @@ public class Array<T> {
         // then value being moved is added to the end of the array
         array[count - 1] = temp;
 
-
     }
+
+    public int indexOf(T value){
+        compareTo<T> compareTo = new compareTo<>();
+       int low = 0 , high = count - 1;
+       while(low <= high){
+           int mid = low + (high - low) / 2;
+           if (compareTo.compareToo(array[mid] , value) == 0)
+               return mid;
+
+
+           // If x greater, ignore left half
+           if (compareTo.compareToo(array[mid] , value) < 0)
+               low = mid + 1;
+
+               // If x is smaller, ignore right half
+           else
+               high = mid - 1;
+       }
+
+       return -1;
+    }
+
 
 
 }
