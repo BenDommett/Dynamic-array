@@ -193,4 +193,17 @@ public class Array<T> {
         array[index] = value;
     }
 
+    public void ensureCapacity(int capacity){
+        T[] temp;
+        if(size < capacity){
+            size = size + (capacity - size);
+            temp = (T[]) new Object[size];
+
+            if (size() >= 0) System.arraycopy(array, 0, temp, 0, size());
+
+            array = temp;
+        }
+
+
+    }
 }
