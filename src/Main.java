@@ -18,6 +18,22 @@ public class Main {
 
         System.out.println(cars.indexOf("volvo"));
 
+        System.out.println(cars.isEmpty());
+
+        Array<String> cars2 = new Array<>();
+        cars2.add("Volkswagen");
+        cars2.add("Toyota");
+        cars2.add("mercedes");
+
+        cars.addAll(cars2);
+        System.out.println(cars2.isEmpty());
+
+        System.out.println("after add all");
+        System.out.println("  ");
+        cars.sort();
+        for(int i = 0; i < cars.size(); i++){
+            System.out.println(cars.get(i));
+        }
 
 
     }

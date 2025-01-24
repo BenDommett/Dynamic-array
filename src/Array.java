@@ -160,6 +160,31 @@ public class Array<T> {
        return -1;
     }
 
+    public Boolean isEmpty(){
 
+        if(count > 0) return false;
+
+
+        return true;
+    }
+
+    public T[] addAll(Array<T> addArray){
+
+        if(count == size) increaseSize();
+        else{
+            for(int i = 0; i < addArray.size(); i++ ){
+
+                if(count == size)increaseSize();
+                else{
+                    array[ count] =  addArray.get(i);
+                    count++;
+
+                }
+
+            }
+        }
+
+        return array;
+    }
 
 }
