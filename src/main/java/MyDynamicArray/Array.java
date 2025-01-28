@@ -1,3 +1,5 @@
+package MyDynamicArray;
+
 public class Array<T> {
 
     private T[] array;
