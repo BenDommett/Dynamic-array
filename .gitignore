@@ -1,6 +1,6 @@
 # Default ignored files
 /shelf/
-/workspace.xml
+/.idea/workspace.xml
 /vcs.xml
 /uiDesigner.xml
 /misc.xml
@@ -10,3 +10,6 @@
 /Dynamic array/
 /dynamic-array.iml
 /pom.xml
+/out/
+/.idea/
+*.iml
