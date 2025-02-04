@@ -4,6 +4,13 @@ package MyDynamicArray;
 // click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
 public class Main {
     public static void main(String[] args) throws CloneNotSupportedException {
+
+        Array<String> array = new Array<>();
+        array.add("hello");
+        array.add("ben");
+
+        array.remove(0);
+
         Array<String> cars = new Array<>();
 
         cars.add("bmw");

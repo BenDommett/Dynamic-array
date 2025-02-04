@@ -60,20 +60,31 @@ public class Array<T> {
 
 
     }
-
+    @SuppressWarnings("unchecked")
     public void  remove(int index){
             // checking if the index is in bounds of the array
-            if( index < 0 || index >= size){
-                System.out.println("Out of bounds");
+            if( index < 0 || index >= size || count == 0 && size == 1){
 
+                throw new IndexOutOfBoundsException("Index " + index + " is out of bounds!");
             }
 
             //finding and removing the element at the inputted index
             for(int i = index; i < count; i++){
-                array[i] = array[i + 1];
+                if(count == 1){
+                    T[] tmep = (T[]) new Object[1];
+                    array[i] = tmep[0] ;
+                    count--;
+                    size = 1;
+                }else{
+                    array[i] = array[i + 1];
+                    count--;
+                    size--;
+                }
+
             }
 
-            count--;
+
+
     }
 
 

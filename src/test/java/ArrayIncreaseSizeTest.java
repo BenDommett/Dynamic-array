@@ -34,4 +34,19 @@ public class ArrayIncreaseSizeTest {
         assertEquals(2048, array.arrayFullSize());
         assertEquals(1500, array.size());
     }
+
+    @Test
+    void testingExtremlyLargArrayIncress(){
+
+        Array<Integer> array = new Array<>();
+
+        for(int i = 0; i < 10000; i++){
+            array.add(i);
+        }
+        assertEquals(16384, array.arrayFullSize());
+        assertEquals(10000, array.size());
+    }
+
+
+
 }
