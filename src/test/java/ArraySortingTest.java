@@ -57,12 +57,19 @@ public class ArraySortingTest {
         Double[] soortedMoney = {0.05, 0.35 ,1.78,2.09,3.5, 5.80,12.5,20.35};
 
         assertArrayEquals(soortedMoney , money.sort());
+
     }
 
     @Test
     void emptyArraySortTest(){
+        Array<String> noNames = new Array<>();
 
+        String[] testNoNames = new String[1];
+
+       assertArrayEquals(testNoNames , noNames.sort());
     }
+
+
 
 }
 
