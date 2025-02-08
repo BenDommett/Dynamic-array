@@ -8,9 +8,9 @@ public class RemoveTest {
     void removeNegative(){
         Array<String> array = new Array<>();
 
-        array.remove(0);
 
-        assertEquals(0 , array.size());
+
+        assertThrows(IndexOutOfBoundsException.class ,() -> array.remove(0) );
     }
 
     @Test

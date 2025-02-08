@@ -1,7 +1,7 @@
 package MyDynamicArray;
 
 public class Array<T> {
-
+    private boolean sizeDecresed = false;
     private T[] array;
     private int size;
     private int count;
@@ -46,16 +46,10 @@ public class Array<T> {
     private void decreasInSize(){
         T[] temp;
         // this increase the array by two times its original size
-        if(count < size || count == size){
-            temp = (T[]) new Object[size - 1];
 
-            if (size() >= 0) System.arraycopy(array, 0, temp, 0, size());
 
-            array = temp;
 
-            size = size - 1;
-            if(size > count)size = count;
-        }else if (count == 1){
+       if (count == 1){
             temp = (T[]) new Object[1];
 
             if (size() >= 0) System.arraycopy(array, 0, temp, 0, size());
@@ -63,7 +57,16 @@ public class Array<T> {
             array = temp;
 
             size = 1;
-        }
+       }else{
+           temp = (T[]) new Object[count];
+
+           if (size() >= 0) System.arraycopy(array, 0, temp, 0, size());
+           array = temp;
+
+
+          // size = size - 1;
+       }
+         //sizeDecresed = true;
     }
     public int size(){
         // this is the used parts of the array
@@ -83,6 +86,7 @@ public class Array<T> {
 
 
     }
+
     @SuppressWarnings("unchecked")
     public void  remove(int index){
             // checking if the index is in bounds of the array
@@ -98,43 +102,68 @@ public class Array<T> {
                     array[i] = tmep[0] ;
                     count--;
                     //size = 1;
-                }else if( i == index){
+                }if(count - 1  == i){
+
+
+
+                    decreasInSize();
+
+                }
+                else{
                     array[i] = array[i + 1];
 
-                    count--;
-                    //if(size > 1) size--;
-                }else{
-                    array[i] = array[i + 1];
                 }
 
             }
-        decreasInSize();
 
 
+
+           count--;
 
     }
 
 
-
-    public T[] remove(T input) {
+    @SuppressWarnings("unchecked")
+    public void removeIteam(T input) {
         boolean  found = false;
-       if(count == 0 ){
-           throw new IndexOutOfBoundsException("Serach for in put does not exist" + input);
-       }
+        String temp = "";
+
+        if(count == 0 ){
+            throw new IndexOutOfBoundsException("Serach for in put does not exist" + input);
+        }
+
+        if(input instanceof String) {
+             temp = ((String) input).toLowerCase();
+             //input = (T) temp;
+        }
+
 
         // for finding the element with in the array
         for (int i = 0; i < count; i++) {
+            T tmepArrayElement = array[i];
+            if (tmepArrayElement instanceof String ){
+                String Elememtemp = ((String) tmepArrayElement).toLowerCase();
+
+                if (Elememtemp.equals(temp)) {
+                    remove(i);
+                    found = true;
+                }
+            }
             // for removing the element with in the array
-            if (array[i] == input) {
+            else if (array[i] == input) {
                 remove(i);
                 found = true;
             }
+        }
+        if(array[size() - 1] == input){
+            count--;
+            increaseSize();
         }
         // this is for if the elmement give was not found
         if(!found){
             System.err.println("Input not found: " + input);
         }
-        return array;
+        //return array;
     }
     @SuppressWarnings("unchecked")
     public void removeALL(){
