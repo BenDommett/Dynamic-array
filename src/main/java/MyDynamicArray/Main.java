@@ -5,6 +5,7 @@ package MyDynamicArray;
 public class Main {
     public static void main(String[] args) throws CloneNotSupportedException {
        Array<Integer> array = new Array<>();
+        // this is still an issues with the numbers removing all the elements from the array where the string seem to be fine th
 
         array.add(1);
         array.add(4);
@@ -12,7 +13,10 @@ public class Main {
         array.add(6);
         array.add(4);
         array.add(4);
-        array.removeIteam(4);
+
+
+
+        array.removeItem(4);
 
 
         for(int i = 0; i < array.size(); i++){
@@ -28,9 +32,11 @@ public class Main {
         names.add("ryan");
         names.add("danny");
         names.add("tom");
-        names.removeIteam("james");
-        names.removeIteam("ben");
-        names.removeIteam("tom");
+        names.add("tom");
+
+        names.removeItem("james");
+        names.removeItem("ben");
+        names.removeItem("tom");
 
         for(int i = 0; i < names.size(); i++){
             System.out.println(names.get(i));
@@ -40,4 +46,5 @@ public class Main {
 
 
     }
+
 }

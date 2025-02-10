@@ -24,8 +24,8 @@ public class RemoveElement {
         names.add("ryan");
         names.add("danny");
         names.add("tom");
-        names.removeIteam("james");
-        names.removeIteam("ben");
+        names.removeItem("james");
+        names.removeItem("ben");
 
 
         Array<String> test = new Array<>();
@@ -54,7 +54,7 @@ public class RemoveElement {
     void removeOutOfBounds(){
         Array<String> names  = new Array<>();
 
-        assertThrows(IndexOutOfBoundsException.class ,() -> names.removeIteam("Ben"));
+        assertThrows(IndexOutOfBoundsException.class ,() -> names.removeItem("Ben"));
     }
 
     @Test
@@ -73,7 +73,7 @@ public class RemoveElement {
 
         System.setErr(new PrintStream(errContent));
 
-        names.removeIteam(ben);
+        names.removeItem(ben);
 
         String expectedMessage = "Input not found: " + ben + System.lineSeparator();
 
@@ -92,8 +92,56 @@ public class RemoveElement {
         array.add(4);
         array.add(4);
 
-        array.removeIteam(4);
+        Array<Integer> test = new Array<>();
+        test.add(1);
+        test.add(5);
+        test.add(6);
+
+        array.removeItem(4);
+        boolean sameSize = false;
+        if(array.size() == array.size()){
+            sameSize = true;
+            for(int i = 0; i < array.size(); i++){
+                int temp = array.get(i);
+                int tempTest = test.get(i);
+                assertEquals(tempTest , temp);
+
+            }
+            assertTrue(sameSize);
+        }
+
+    }
 
 
+    @Test
+    void elementRomoveWithTwoOnEnd(){
+        Array<Integer> array = new Array<>();
+
+        array.add(1);
+        array.add(4);
+        array.add(5);
+        array.add(6);
+        array.add(4);
+        array.add(4);
+        array.add(10);
+        array.add(10);
+        Array<Integer> test = new Array<>();
+        test.add(1);
+        test.add(5);
+        test.add(6);
+        test.add(10);
+        test.add(10);
+        array.removeItem(4);
+        boolean sameSize = false;
+        if(array.size() == array.size()){
+            sameSize = true;
+            for(int i = 0; i < array.size(); i++){
+                int temp = array.get(i);
+                int tempTest = test.get(i);
+                assertEquals(tempTest , temp);
+
+            }
+            assertTrue(sameSize);
+        }
     }
 }

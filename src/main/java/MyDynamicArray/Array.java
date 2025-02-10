@@ -60,7 +60,7 @@ public class Array<T> {
        }else{
            temp = (T[]) new Object[count];
 
-           if (size() >= 0) System.arraycopy(array, 0, temp, 0, size());
+              if (size() >= 0) System.arraycopy(array, 0, temp, 0, size());
            array = temp;
 
 
@@ -96,36 +96,23 @@ public class Array<T> {
             }
 
             //finding and removing the element at the inputted index
-            for(int i = index; i < count; i++){
-                if(count == 1){
-                    T[] tmep = (T[]) new Object[1];
-                    array[i] = tmep[0] ;
-                    count--;
-                    //size = 1;
-                }if(count - 1  == i){
+            for(int i = index; i < count - 1; i++){
 
 
+                array[i] = array[i + 1];
 
-                    decreasInSize();
-
-                }
-                else{
-                    array[i] = array[i + 1];
-
-                }
 
             }
 
 
-
-           count--;
-
+            count--;
+            decreasInSize();
     }
 
 
     @SuppressWarnings("unchecked")
-    public void removeIteam(T input) {
-        boolean  found = false;
+    public void removeItem(T input) {
+        boolean  foundboolean = false;
         String temp = "";
 
         if(count == 0 ){
@@ -137,7 +124,7 @@ public class Array<T> {
              //input = (T) temp;
         }
 
-
+        int numberOfItems = 0;
         // for finding the element with in the array
         for (int i = 0; i < count; i++) {
             T tmepArrayElement = array[i];
@@ -145,26 +132,53 @@ public class Array<T> {
                 String Elememtemp = ((String) tmepArrayElement).toLowerCase();
 
                 if (Elememtemp.equals(temp)) {
-                    remove(i);
-                    found = true;
+                    //remove(i);
+                    numberOfItems++;
+                    foundboolean = true;
                 }
             }
             // for removing the element with in the array
             else if (array[i] == input) {
-                remove(i);
-                found = true;
+                //remove(i);
+                numberOfItems++;
+                foundboolean = true;
             }
         }
-        if(array[size() - 1] == input){
-            count--;
-            increaseSize();
-        }
+
         // this is for if the elmement give was not found
-        if(!found){
+        if(!foundboolean){
             System.err.println("Input not found: " + input);
         }
-        //return array;
+        deletItem(numberOfItems, input);
+
     }
+
+    /***
+     *
+     *
+     * @param input
+     * <p> this is to split the action of the two remove Item methods up the first on make sure the items are with in the array then passes the number to this method</p>
+     * <p>once all are found then it will brake the loop and return the array with out the unwonted items </p>
+     */
+    @SuppressWarnings("unchecked")
+    private void deletItem(int numberOfItems , T input ){
+        int j = 0;
+
+        for (int i = 0; i < count ; i++) {
+            if (array[i] != input) {
+                array[j] = array[i];
+
+                j++;
+            }
+        }
+
+
+        count = count - numberOfItems;
+        decreasInSize();
+    }
+
+
+
     @SuppressWarnings("unchecked")
     public void removeALL(){
 
