@@ -11,7 +11,7 @@ import static org.junit.jupiter.api.Assertions.*;
  * <p> this is diffrent test to the other Remove as that was looking at the index vertion of the method this is looking at the method that finds an element and deletes that one form the array. </p>
  *
  */
-public class removeElement {
+public class removeElementTest {
 
     @Test
     void removeElements(){

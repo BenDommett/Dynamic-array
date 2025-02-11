@@ -29,7 +29,7 @@ public class Array<T> {
     private void increaseSize(){
         T[] temp;
         // this increase the array by two times its original size
-         if(count == size){
+         if(count == size || count > size){
              temp = (T[]) new Object[size * 2];
 
              if (size() >= 0) System.arraycopy(array, 0, temp, 0, size());
@@ -232,10 +232,11 @@ public class Array<T> {
         temp = array[index];
         // then replaced with the chosen input at the given index
         array[index] = input;
+
+        // checking the size and count to see if size needs to be increased
+        if(count == size || count > size) increaseSize();
         // updating the count
         count++;
-        // checking the size and count to see if size needs to be increased
-        if(count == size) increaseSize();
         // then value being moved is added to the end of the array
         array[count - 1] = temp;
 
