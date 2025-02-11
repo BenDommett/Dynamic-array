@@ -151,6 +151,7 @@ public class Array<T> {
         }
         deletItem(numberOfItems, input);
 
+
     }
 
     /***
@@ -163,10 +164,14 @@ public class Array<T> {
     @SuppressWarnings("unchecked")
     private void deletItem(int numberOfItems , T input ){
         int j = 0;
+        compareTo<T> compareTo = new compareTo<>();
+        T[] arrayTemp = (T[]) new Object[count];
+
 
         for (int i = 0; i < count ; i++) {
-            if (array[i] != input) {
-                array[j] = array[i];
+
+            if ( compareTo.compareToo(array[i] , input) != 0) {
+                arrayTemp[j] = array[i];
 
                 j++;
             }
@@ -174,6 +179,7 @@ public class Array<T> {
 
 
         count = count - numberOfItems;
+        array = arrayTemp;
         decreasInSize();
     }
 
@@ -182,7 +188,9 @@ public class Array<T> {
     @SuppressWarnings("unchecked")
     public void removeALL(){
 
-
+        if(count == 0){
+            throw new IndexOutOfBoundsException("there is nothing to remove ");
+        }
         // this creates a new array
         array = (T[]) new Object[1];
         // resets the values to the original state

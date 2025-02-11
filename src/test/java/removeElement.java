@@ -2,7 +2,6 @@ import MyDynamicArray.Array;
 import org.junit.jupiter.api.Test;
 
 import java.io.ByteArrayOutputStream;
-import java.io.File;
 import java.io.PrintStream;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -12,10 +11,10 @@ import static org.junit.jupiter.api.Assertions.*;
  * <p> this is diffrent test to the other Remove as that was looking at the index vertion of the method this is looking at the method that finds an element and deletes that one form the array. </p>
  *
  */
-public class RemoveElement {
+public class removeElement {
 
     @Test
-    void removeElement(){
+    void removeElements(){
         Array<String> names  = new Array<>();
 
         names.add("ben");
@@ -144,4 +143,76 @@ public class RemoveElement {
             assertTrue(sameSize);
         }
     }
+    @Test
+    void removeFromEmptyArray(){
+
+        Array<String> array = new Array<>();
+
+        assertThrows(IndexOutOfBoundsException.class , () -> array.removeItem("Ben"));
+    }
+
+    @Test
+    void RemoveAllEments(){
+
+        Array<String> Names = new Array<>();
+        Names.add("james");
+        Names.add("Ben");
+
+        Names.removeItem("ben");
+        Names.removeItem("james");
+
+        assertThrows(IndexOutOfBoundsException.class , () -> Names.removeItem("emma"));
+    }
+
+    @Test
+    void removingFromFrontOfArray(){
+        Array<String> names = new Array<>();
+
+        names.add("ben");
+        names.add("ben");
+        names.add("james");
+        names.add("paul");
+        names.add("emma");
+        names.add("Ben");
+        names.removeItem("ben");
+        String[] test = {"james" , "paul" , "emma" };
+
+        for(int i = 0; i < test.length; i++){
+            String TestTemp = test[i];
+
+            String namesTemp = names.get(i);
+
+            assertEquals(TestTemp , namesTemp);
+        }
+
+    }
+    @Test
+    void removingFromTheBackOfArray(){
+        Array<String> names = new Array<>();
+
+
+        names.add("james");
+        names.add("paul");
+        names.add("Ben");
+        names.add("emma");
+        names.add("ben");
+        names.add("ben");
+        names.removeItem("ben");
+        String[] test = {"james" , "paul" , "emma" };
+
+        for(int i = 0; i < test.length; i++){
+            String TestTemp = test[i];
+
+            String namesTemp = names.get(i);
+
+            assertEquals(TestTemp , namesTemp);
+        }
+
+    }
+
 }
+
+
+
+
+
