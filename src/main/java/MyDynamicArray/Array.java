@@ -68,11 +68,19 @@ public class Array<T> {
        }
          //sizeDecresed = true;
     }
+
+    /**
+     * <p>this returns the number of indexs full within the array to be used for forLoops</p>
+     * @return Int
+     */
     public int size(){
         // this is the used parts of the array
         return count;
     }
-
+    /**
+     * <p> this shows the arrays full size with the index with nothing in them as well</p>
+     * @return Int
+     */
     public int arrayFullSize(){
         // this returns the full size of the array even the unused parts of the array
         return size;
@@ -227,6 +235,8 @@ public class Array<T> {
     public  void Insert(T input , int index ){
 
 
+        if(count < 0) throw new IndexOutOfBoundsException("the array is empty and insert can't be used ");
+        // need a throws index out of Exception
         T temp;
         // this is where the value is copy from the array
         temp = array[index];
@@ -245,10 +255,17 @@ public class Array<T> {
     public int indexOf(T value){
         compareTo<T> compareTo = new compareTo<>();
        int low = 0 , high = count - 1;
+
+       boolean found = false;
        while(low <= high){
            int mid = low + (high - low) / 2;
-           if (compareTo.compareToo(array[mid] , value) == 0)
+           if (compareTo.compareToo(array[mid] , value) == 0){
+
+
                return mid;
+           }
+
+
 
 
            // If x greater, ignore left half
@@ -260,6 +277,7 @@ public class Array<T> {
                high = mid - 1;
        }
 
+       System.err.println("item not found");
        return -1;
     }
 
@@ -277,9 +295,12 @@ public class Array<T> {
         else{
             for(int i = 0; i < addArray.size(); i++ ){
 
-                if(count == size)increaseSize();
+                if(count == size){
+                    increaseSize();
+                    i--;
+                }
                 else{
-                    array[ count] =  addArray.get(i);
+                    array[count] =  addArray.get(i);
                     count++;
 
                 }
@@ -291,9 +312,24 @@ public class Array<T> {
     }
 
     public void set(T value , int index){
+        if(count == 0 && index > 0){
+            throw new IndexOutOfBoundsException("the index you are trying to set the value for is out of bounds");
+        }else if(count == 0 && index == 0){
+            count++;
+            array[index] = value;
+        }else if(count == size){
+            increaseSize();
+            count++;
+            array[index] = value;
+        }else if(count == index){
+            count++;
+            array[index] = value;
+        }
+        else{
+            // then replaced with the chosen input at the given index
+            array[index] = value;
+        }
 
-        // then replaced with the chosen input at the given index
-        array[index] = value;
     }
 
     public void ensureCapacity(int capacity){
@@ -305,6 +341,9 @@ public class Array<T> {
             if (size() >= 0) System.arraycopy(array, 0, temp, 0, size());
 
             array = temp;
+        }else if(size() == 0){
+            size = capacity;
+            array =  (T[]) new Object[size];
         }
 
 
